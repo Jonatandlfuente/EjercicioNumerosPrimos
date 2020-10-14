@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Primo extends Thread {
 
-	public static int totalDePrimos;
+	public int totalDePrimos;
 	public String nombre;
 	public int rangoInicial;
 	public int rangoFinal;
@@ -18,19 +18,19 @@ public class Primo extends Thread {
 		this.rangoFinal = rangoFinal;
 	}
 
-	public static int getTotalDePrimos() {
+	public int getTotalDePrimos() {
 		return totalDePrimos;
 	}
 
-	public static void setTotalDePrimos(int totalDePrimos) {
-		totalDePrimos = totalDePrimos;
+	public void setTotalDePrimos(int totalDePrimos) {
+		this.totalDePrimos = totalDePrimos;
 	}
 
 	@Override
 	public void run() {
 		int aux = 0;
 		// la lógica del hilo nos verifica si un número es primo entre dos rangos
-		for (int i = rangoInicial; i <=rangoFinal; i++) {
+		for (int i = rangoInicial; i <= rangoFinal; i++) {
 			verificarPrimo(i);
 		}
 	}
@@ -45,8 +45,10 @@ public class Primo extends Thread {
 		BigInteger bigInteger = new BigInteger(String.valueOf(numeroPrimo));
 		primo = bigInteger.isProbablePrime(numeroPrimo);
 		if (primo != false) {
-			/*Prueba para contar el número de primos, no funciona
-			Primo.setTotalDePrimos(Primo.getTotalDePrimos()+1);*/
+			/*
+			 * Prueba para contar el número de primos, no funciona
+			 * Primo.setTotalDePrimos(Primo.getTotalDePrimos()+1)
+			 */
 			System.out.println(numeroPrimo);
 		}
 	}
